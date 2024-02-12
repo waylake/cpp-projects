@@ -6,42 +6,49 @@
 
 using namespace std;
 
-class WayInterpreter {
+class WayCompiler {
 public:
-  void interpret(const string &filename) {
-    ifstream file(filename);
-    if (!file.is_open()) {
-      cout << "Error: Cannot open file " << filename << endl;
+  void compile(const string &inputFilename, const string &outputFilename) {
+    ifstream inputFile(inputFilename);
+    if (!inputFile.is_open()) {
+      cout << "Error: Cannot open file " << inputFilename << endl;
+      return;
+    }
+
+    ofstream outputFile(outputFilename);
+    if (!outputFile.is_open()) {
+      cout << "Error: Cannot create file " << outputFilename << endl;
+      inputFile.close();
       return;
     }
 
     string line;
-    while (getline(file, line)) {
-      parseLine(line);
+    while (getline(inputFile, line)) {
+      vector<string> tokens = tokenize(line);
+      if (tokens.empty())
+        continue;
+      if (tokens[0] == "say") {
+        if (tokens.size() >= 2) {
+          outputFile << "say ";
+          for (size_t i = 1; i < tokens.size(); ++i) {
+            outputFile << tokens[i] << " ";
+          }
+          outputFile << endl;
+        } else {
+          cout << "Error: Invalid say statement" << endl;
+        }
+      } else {
+        cout << "Error: Unknown statement" << endl;
+      }
     }
 
-    file.close();
+    inputFile.close();
+    outputFile.close();
+    cout << "Compilation completed. Binary file generated: " << outputFilename
+         << endl;
   }
 
 private:
-  void parseLine(const string &line) {
-    vector<string> tokens = tokenize(line);
-    if (tokens.empty())
-      return;
-    if (tokens[0] == "say") {
-      if (tokens.size() >= 2) {
-        for (size_t i = 1; i < tokens.size(); ++i) {
-          cout << tokens[i] << " ";
-        }
-        cout << endl;
-      } else {
-        cout << "Error: Invalid say statement" << endl;
-      }
-    } else {
-      cout << "Error: Unknown statement" << endl;
-    }
-  }
-
   vector<string> tokenize(const string &str) {
     vector<string> tokens;
     istringstream iss(str);
@@ -54,13 +61,15 @@ private:
 };
 
 int main(int argc, char *argv[]) {
-  if (argc != 2) {
-    cout << "Usage: " << argv[0] << " <way_file.way>" << endl;
+  if (argc != 3) {
+    cout << "Usage: " << argv[0] << " <way_file.way> <output_binary>" << endl;
     return 1;
   }
 
-  string filename = argv[1];
-  WayInterpreter interpreter;
-  interpreter.interpret(filename);
+  string inputFilename = argv[1];
+  string outputFilename = argv[2];
+
+  WayCompiler compiler;
+  compiler.compile(inputFilename, outputFilename);
   return 0;
 }

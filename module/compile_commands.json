@@ -1,0 +1,16 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++11",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/main.o",
+      "src/main.cpp"
+    ],
+    "directory": "/Users/davek/github/2024-1/cpp-projects/module",
+    "file": "/Users/davek/github/2024-1/cpp-projects/module/src/main.cpp",
+    "output": "/Users/davek/github/2024-1/cpp-projects/module/build/main.o"
+  }
+]
