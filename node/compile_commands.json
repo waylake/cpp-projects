@@ -1,0 +1,30 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++11",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/main.o",
+      "src/main.cpp"
+    ],
+    "directory": "/Users/davek/github/2024-1/cpp-projects/class",
+    "file": "/Users/davek/github/2024-1/cpp-projects/class/src/main.cpp",
+    "output": "/Users/davek/github/2024-1/cpp-projects/class/build/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++11",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/node.o",
+      "src/node.cpp"
+    ],
+    "directory": "/Users/davek/github/2024-1/cpp-projects/class",
+    "file": "/Users/davek/github/2024-1/cpp-projects/class/src/node.cpp",
+    "output": "/Users/davek/github/2024-1/cpp-projects/class/build/node.o"
+  }
+]
