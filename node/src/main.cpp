@@ -31,6 +31,9 @@ int main() {
   child2_1->add_child(child2_1_1);
   child2_1->add_child(child2_1_2);
 
+  // print memory usage
+  root->get_memory_usage(root);
+
   // Print the tree
   root->print_all(0);
 

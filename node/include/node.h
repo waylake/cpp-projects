@@ -24,6 +24,7 @@ public:
   Node(Node *parent, string col, int field, int level)
       : parent(parent), col(col), field(field), level(level) {}
 
+  void get_memory_usage(Node *node);
   void add_child(Node *child);
   void print_child();
   void print_field();

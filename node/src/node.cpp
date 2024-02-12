@@ -1,9 +1,17 @@
 #include "node.h"
+#include <iomanip>
 #include <iostream>
 
 using namespace std;
 
 void Node::add_child(Node *child) { this->child.push_back(child); }
+
+void Node::get_memory_usage(Node *node) {
+  double memoryUsageMB = static_cast<double>(sizeof(*node)) / (1024 * 1024);
+
+  cout << "Memory usage: " << fixed << setprecision(16) << memoryUsageMB
+       << " MB" << endl;
+}
 
 void Node::print_child() {
   for (auto c : child) {
@@ -43,10 +51,8 @@ void Node::print_all(int indent = 0) {
   for (size_t i = 0; i < child.size(); ++i) {
     cout << "|";
     if (i == child.size() - 1) {
-      // 마지막 자식 노드인 경우
-      child[i]->print_all(indent + 1); // 자식 노드 출력
+      child[i]->print_all(indent + 1);
     } else if (i == 0) {
-      // 첫번째 자식 노드인 경우
       child[i]->print_all(indent + 1);
     } else {
       for (int j = 0; j < indent - 1; ++j) {
