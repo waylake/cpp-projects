@@ -1,0 +1,30 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++11",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/binary_io.o",
+      "src/binary_io.cpp"
+    ],
+    "directory": "/Users/davek/github/2024-1/cpp-projects/binary_file",
+    "file": "/Users/davek/github/2024-1/cpp-projects/binary_file/src/binary_io.cpp",
+    "output": "/Users/davek/github/2024-1/cpp-projects/binary_file/build/binary_io.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++11",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/main.o",
+      "src/main.cpp"
+    ],
+    "directory": "/Users/davek/github/2024-1/cpp-projects/binary_file",
+    "file": "/Users/davek/github/2024-1/cpp-projects/binary_file/src/main.cpp",
+    "output": "/Users/davek/github/2024-1/cpp-projects/binary_file/build/main.o"
+  }
+]

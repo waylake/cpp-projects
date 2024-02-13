@@ -12,7 +12,6 @@ public:
   string col;
   int field;
   vector<Node *> child;
-  string dtype;
   int level;
 
   ~Node() {
@@ -29,7 +28,6 @@ public:
   void print_child();
   void print_field();
   void print_level();
-  void print_dtype();
   void print_all(int indent);
 };
 
