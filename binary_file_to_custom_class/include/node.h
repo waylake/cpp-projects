@@ -1,0 +1,38 @@
+#ifndef NODE_H
+#define NODE_H
+
+#include <string>
+#include <vector>
+
+using namespace std;
+
+class Node {
+public:
+  Node *parent;
+  string col;
+  int field;
+  vector<Node *> child;
+  int level;
+
+  ~Node() {
+    for (auto c : child) {
+      delete c;
+    }
+  }
+
+  Node(Node *parent, string col, int field, int level)
+      : parent(parent), col(col), field(field), level(level) {}
+
+  Node *Deserialize(ifstream &ifs);
+  Node *load(string filename);
+  void Serialize(ofstream &ofs);
+  void save(string filename);
+  void get_memory_usage(Node *node);
+  void add_child(Node *child);
+  void print_child();
+  void print_field();
+  void print_level();
+  void print_all(int indent);
+};
+
+#endif
